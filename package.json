@@ -12,6 +12,7 @@
   "author": "JacksonSmith",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-router": "0.0.1",
     "mongod": "^2.0.0",
