@@ -11,12 +11,15 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-const db = require('./config/keys').MongoURI;
-
-//Connect to Mongo
-mongoose.connect(db, { useNewUrlParser: true})
-    .then(() => console.log('MongoDB Connected...'))
-    .catch(err => console.log(err));
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/workout',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+  );
 
 //routes
 app.use(require("./routes/html"));
