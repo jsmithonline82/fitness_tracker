@@ -13,10 +13,10 @@ app.use(express.static("public"));
 
 const db = require('./config/keys').MongoURI;
 
-mongoose.connect(process.env.MongoURI|| "mongodb://localhost/workout", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
+//Connect to Mongo
+mongoose.connect(db, { useNewUrlParser: true})
+    .then(() => console.log('MongoDB Connected...'))
+    .catch(err => console.log(err));
 
 //routes
 app.use(require("./routes/html"));
